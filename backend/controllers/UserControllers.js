@@ -18,7 +18,7 @@ export const RegisterUser = TryCatch(async (req, res) => {
 
     const HashPassword = await bcrypt.hash(password, 10);
 
-    const NewUser = await User.create({
+    const NewUser = await User.create({ 
         name,
         email,
         password: HashPassword,
