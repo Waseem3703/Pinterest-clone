@@ -16,7 +16,7 @@ cloudinary.v2.config({
 })
 dotenv.config();
 
-const port =3000;
+const port = 5000;
 
 //middleware
 app.use(express.json());
