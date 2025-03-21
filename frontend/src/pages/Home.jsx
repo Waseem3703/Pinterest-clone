@@ -1,5 +1,7 @@
 import { PinData } from "../context/PinContext";
 import { Loading } from "../components/Loading";
+import { PinCard } from "../context/PinCard";
+
 
 
 
@@ -20,7 +22,7 @@ import { Loading } from "../components/Loading";
                 <div className="flex flex-wrap m-4">
                     {
                         pins && pins.length > 0 ?(
-                            pins.map((e,i)=> <p key={i}>{e.title}</p>)
+                            pins.map((e,i)=> <PinCard key={i} pin={e}/>)
                         ):(
                             <p>No Pin Yet</p>
                         )

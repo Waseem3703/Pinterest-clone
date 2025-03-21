@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserData } from "../context/UserContext";
+import { FaGoogle, FaFacebook } from "react-icons/fa";
+
 
 function Register (){
     
@@ -95,20 +97,17 @@ function Register (){
                   </div>
                 </div>
         
-                <div className="space-y-3">
-                  <button
-                    type="button"
-                    className="social-login"
-                  >
-                    Continue with Google
-                  </button>
-                  <button
-                    type="button"
-                    className="social-login"
-                  >
-                    Continue with Facebook
-                  </button>
-                </div>
+                     <div className="flex justify-center space-x-4">
+                         <button className="w-12 h-12 flex justify-center items-center border rounded-md shadow-md 
+                         transition-all duration-400 text-red-600 border-red-500 hover:bg-red-500 hover:text-white">
+                           <FaGoogle size={24} />
+                         </button>
+               
+                         <button className="w-12 h-12 flex justify-center items-center border rounded-md shadow-md 
+                         transition-all duration-400 text-blue-600 border-blue-500 hover:bg-blue-500 hover:text-white">
+                           <FaFacebook size={24} />
+                         </button>
+                       </div>
         
                 <div className="mt-4 text-center text-xs text-gray-500">
                   <span>
