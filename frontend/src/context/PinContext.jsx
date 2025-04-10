@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 
 const PinContext = createContext();
@@ -24,6 +25,18 @@ export const PinProvider = ({ children }) => {
         fetchPins();
     }, []);
 
+    async function updatePin (id, pin, title, setEdit,) {
+
+        try {
+            const {data} = await axios.put("/api/pin/" + id, {title, pin});
+            toast.success(data.message);
+            fetchPin(id);
+            setEdit(false);
+        } catch (error) {
+            toast.error(error.response.data.message);
+        }
+
+    }
 
     async function fetchPin(id) {
         setLoading(true);
@@ -38,7 +51,7 @@ export const PinProvider = ({ children }) => {
     
 
     return (
-        <PinContext.Provider value={{ pins, loading, fetchPin, pin }}>
+        <PinContext.Provider value={{ pins, loading, fetchPin, pin, updatePin }}>
             {children}
         </PinContext.Provider>
     );
