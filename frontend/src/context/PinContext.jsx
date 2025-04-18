@@ -25,7 +25,7 @@ export const PinProvider = ({ children }) => {
         fetchPins();
     }, []);
 
-    async function updatePin (id, pin, title, setEdit,) {
+    async function updatePin(id, title, pin, setEdit) {
 
         try {
             const {data} = await axios.put("/api/pin/" + id, {title, pin});
