@@ -1,20 +1,27 @@
-import { Link, useParams } from "react-router-dom";
+import { Link,  useNavigate, useParams } from "react-router-dom";
 import { PinData } from "../context/PinContext";
 import { useEffect, useState } from "react";
 import { Loading } from "../components/Loading";
 import { MdDelete } from "react-icons/md";
 import { UserData } from "../context/UserContext";
 import { FaRegEdit } from "react-icons/fa";
+import  ConfirmDelete  from "../components/ConfirmDelete";
 
 
 
 const PinPage = () => {
 
-    const { updatePin } = PinData();
+    const { updatePin, addComment, deleteComment, deletePin } = PinData();
+
     const [edit, SetEdit] = useState(false);
     const [title, setTitle] = useState("");
     const [pinValue, setPinValue] = useState("");
+    const [comment, setComment] = useState("");
 
+{/*for the delete button*/}
+const [showModal, setShowModal] = useState(false);
+const [modalMessage, setModalMessage] = useState("");
+const [onConfirmAction, setOnConfirmAction] = useState(() => () => {});
 
 
     const editHandler = () => {
@@ -26,7 +33,25 @@ const PinPage = () => {
     const updateHandler = () => {
         updatePin(pin._id, title, pinValue, SetEdit)
     }
+    const SubmitHandler = (e) => {
+        e.preventDefault();
+        addComment(pin._id, comment, setComment);
 
+    }
+
+    const deleteCommentHandler = (id) => {
+        setModalMessage(`Delete ${pin.comment}`);
+        setOnConfirmAction(() => () => deleteComment(pin._id, id));
+        setShowModal(true);
+    };
+    
+
+    const deletePinHandler = () => {
+        setModalMessage(`Delete "${pin.title}" Pin`);
+        setOnConfirmAction(() => () => deletePin(pin._id, navigate));
+        setShowModal(true);
+    };
+    
 
     const { id } = useParams();
     const { loading, fetchPin, pin } = PinData();
@@ -37,6 +62,7 @@ const PinPage = () => {
             fetchPin(id);
         }
     }, [id]);
+    
 
     return (
 
@@ -79,9 +105,8 @@ const PinPage = () => {
                                             >
                                                 <FaRegEdit />
                                             </button>
-                                            <button className="flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white py-2 px-3 rounded-lg shadow transition duration-300">
+                                            <button onClick={deletePinHandler} className="flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white py-2 px-3 rounded-lg shadow transition duration-300">
                                                 <MdDelete size={18} />
-                                                <span className="text-sm">Delete</span>
                                             </button>
                                         </div>
                                     )}
@@ -126,12 +151,17 @@ const PinPage = () => {
                                         {pin.owner && pin.owner.name.slice(0, 1)}
                                     </div>
 
-                                    <form className="flex-1 flex items-center space-x-3 ml-4">
+                                    <form className="flex-1 flex items-center space-x-3 ml-4" onSubmit={SubmitHandler}>
                                         <input
                                             type="text"
                                             placeholder="Write a comment..."
-                                            className="flex-1 border border-gray-300 rounded-lg px-4 py-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-400 shadow-sm"
+                                            className="flex-1 border border-gray-300 rounded-lg px-4 py-2
+                                             text-gray-700 focus:outline-none focus:ring-2 focus:ring-red-400
+                                              shadow-sm"
+                                            value={comment}
+                                            onChange={(e) => setComment(e.target.value)}
                                             required
+
                                         />
                                         <button
                                             type="submit"
@@ -141,14 +171,51 @@ const PinPage = () => {
                                         </button>
                                     </form>
                                 </div>
-                            </div>
+                                <hr className="font-bold text-gray-400 mt-3 mb-3 " />
+                                <div className="overflow-y-auto h-6">
+                                    {pin.comment && pin.comment.length > 0 ? (
+                                        pin.comment.map((e, i) => (
+                                            <div key={i} className="flex items-center justify-center mb-4">
+                                                <div className="flex items-center mb-4">
+                                                    <Link to={`/user/${e.user}`}>
+                                                        <div className="rounded-full h-12 w-12 bg-gradient-to-tr from-red-400 to-pink-400 text-white flex items-center justify-center text-lg font-bold shadow-md">
+                                                            {e.name.slice(0, 1)}
+                                                        </div>
+                                                    </Link>
+                                                    <div className="ml-4">
+                                                        <h2 className="text-lg font-semibold text-gray-800">{e.name}</h2>
+                                                        <p className="text-gray-500">{e.comment}</p>
+                                                    </div>
+                                                </div>
+                                                {e.user === user._id && (
+                                                    <button onClick={()=>deleteCommentHandler(e._id)} className="flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white py-2 px-3 rounded-lg shadow transition duration-300">
+                                                        <MdDelete size={18} />
+                                                    </button>
+                                                )}
+                                            </div>
+                                        ))
+                                    ) : (
+                                        <p>Be the first one to add comment</p>
+                                    )}
 
+                                </div>
+                            </div>
                         </div>
                     )}
 
 
                 </div>
             )}
+               {showModal && (
+        <ConfirmDelete
+            message={modalMessage}
+            onConfirm={() => {
+                onConfirmAction();
+                setShowModal(false);
+            }}
+            onCancel={() => setShowModal(false)}
+        />
+    )}
         </div>
     );
 };

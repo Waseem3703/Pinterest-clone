@@ -37,6 +37,26 @@ export const PinProvider = ({ children }) => {
         }
 
     }
+    async function addComment(id, comment, setComment) {
+        try {
+            const {data} = await axios.post("/api/pin/comment/"+id, {comment});
+            toast.success(data.message);
+            fetchPin(id);
+            setComment("");            
+        } catch (error) {
+            toast.error(error.response.data.message);
+        }
+    }
+
+    async function deleteComment(id, commentId) {
+        try {
+            const {data} = await axios.delete(`/api/pin/comment/${id}?commentId=${commentId}`);
+            toast.success(data.message);
+            fetchPin(id);
+        } catch (error) {
+            toast.error(error.response.data.message);
+        }
+    }
 
     async function fetchPin(id) {
         setLoading(true);
@@ -49,9 +69,30 @@ export const PinProvider = ({ children }) => {
         setLoading(false);
     }
     
+    async function deletePin(id, navigate) {
+        setLoading(true);
+        try {
+            const {data} = await axios.delete(`/api/pin/${id}`);
+            toast.success(data.message);
+            navigate("/");
+            setLoading(false);
+        } catch (error) {
+            toast.error(error.response.data.message);
+            setLoading(false);
+        }
+    }
 
     return (
-        <PinContext.Provider value={{ pins, loading, fetchPin, pin, updatePin }}>
+        <PinContext.Provider value={{ 
+            pins,
+            loading,
+            fetchPin,
+            pin,
+            updatePin,
+            addComment,
+            deleteComment,
+            deletePin
+                 }}>
             {children}
         </PinContext.Provider>
     );
