@@ -76,6 +76,7 @@ export const PinProvider = ({ children }) => {
             toast.success(data.message);
             navigate("/");
             setLoading(false);
+            fetchPins();
         } catch (error) {
             toast.error(error.response.data.message);
             setLoading(false);

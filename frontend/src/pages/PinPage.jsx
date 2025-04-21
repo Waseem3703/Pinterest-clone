@@ -12,7 +12,7 @@ import  ConfirmDelete  from "../components/ConfirmDelete";
 const PinPage = () => {
 
     const { updatePin, addComment, deleteComment, deletePin } = PinData();
-
+    const navigate = useNavigate();
     const [edit, SetEdit] = useState(false);
     const [title, setTitle] = useState("");
     const [pinValue, setPinValue] = useState("");
@@ -101,11 +101,11 @@ const [onConfirmAction, setOnConfirmAction] = useState(() => () => {});
                                         <div className="flex gap-2 items-center">
                                             <button
                                                 onClick={editHandler}
-                                                className="text-red-500 hover:text-red-600 text-xl transition duration-300"
+                                                className="cursor-pointer text-red-500 hover:text-red-600 text-xl transition duration-300"
                                             >
                                                 <FaRegEdit />
                                             </button>
-                                            <button onClick={deletePinHandler} className="flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white py-2 px-3 rounded-lg shadow transition duration-300">
+                                            <button onClick={deletePinHandler} className="cursor-pointer flex items-center gap-1 bg-red-500 hover:bg-red-600 text-white py-2 px-3 rounded-lg shadow transition duration-300">
                                                 <MdDelete size={18} />
                                             </button>
                                         </div>
@@ -125,7 +125,7 @@ const [onConfirmAction, setOnConfirmAction] = useState(() => () => {});
 
                                 {edit && (
                                     <button
-                                        className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg w-[250px] transition duration-300"
+                                        className= "cursor-pointer bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg w-[250px] transition duration-300"
                                         onClick={updateHandler}
                                     >
                                         Update
@@ -165,7 +165,7 @@ const [onConfirmAction, setOnConfirmAction] = useState(() => () => {});
                                         />
                                         <button
                                             type="submit"
-                                            className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg shadow-md transition duration-300"
+                                            className="cursor-pointer bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg shadow-md transition duration-300"
                                         >
                                             Add+
                                         </button>
