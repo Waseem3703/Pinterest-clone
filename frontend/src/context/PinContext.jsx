@@ -83,6 +83,22 @@ export const PinProvider = ({ children }) => {
         }
     }
 
+    async function addPin(formData, setFilePrev, setFile, setTitle, setPin, navigate) {
+        try {
+            const {data} = await axios.post("/api/pin/new", formData);
+            toast.success(data.message);
+            setFile([]);
+            setFilePrev("");
+            setPin("");
+            setTitle("");
+            fetchPins();
+            navigate("/");
+        } catch (error) {
+            toast.error(error.response.data.message);
+
+        }
+    }
+
     return (
         <PinContext.Provider value={{ 
             pins,
@@ -92,7 +108,8 @@ export const PinProvider = ({ children }) => {
             updatePin,
             addComment,
             deleteComment,
-            deletePin
+            deletePin,
+            addPin
                  }}>
             {children}
         </PinContext.Provider>

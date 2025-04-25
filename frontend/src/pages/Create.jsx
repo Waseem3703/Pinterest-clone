@@ -1,13 +1,18 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router";
 import { FaPlus } from "react-icons/fa";
+import { PinData } from "../context/PinContext";
 
 const Create = () => {
   const inputRef = useRef(null);
-
   const [file, setFile] = useState("");
   const [filePrev, setFilePrev] = useState("");
   const [title, setTitle] = useState("");
   const [pin, setPin] = useState("");
+
+  const navigate = useNavigate();
+
+  const { addPin } = PinData();
 
   const handleClick = () => {
     inputRef.current.click();
@@ -26,16 +31,21 @@ const Create = () => {
     };
   };
 
-  const addPin = (e) => {
+  const addPinHandler = (e) => {
     e.preventDefault();
-    console.log({ file, title, pin });
-    // Here you'd send data to backend
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("pin", pin);
+    formData.append("file", file);
+
+    addPin(formData, setFilePrev, setFile, setTitle, setPin, navigate);
   };
 
   return (
     <div className="flex justify-center items-start mt-10 px-4">
       <form 
-        onSubmit={addPin}
+        onSubmit={addPinHandler}
         className="w-full max-w-2xl bg-white p-6 rounded-lg shadow-lg space-y-6"
       >
         {/* Image Upload Section */}
@@ -107,7 +117,7 @@ const Create = () => {
         <div className="flex justify-end">
           <button
             type="submit"
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
+            className="cursor-pointer px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200"
           >
             Add +
           </button>
