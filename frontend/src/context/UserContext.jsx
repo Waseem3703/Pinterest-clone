@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
+import { PinData } from "./PinContext";
 
 const UserContext = createContext();
 
@@ -10,7 +11,8 @@ export const UserProvider = ({ children }) => {
     const [btnLoading, setBtnLoading] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    async function registerUser(name, email, password, navigate) {
+
+    async function registerUser(name, email, password, navigate, fetchPins) {
         setBtnLoading(true);
         try {
             const { data } = await axios.post(
@@ -22,6 +24,7 @@ export const UserProvider = ({ children }) => {
             setUser(data.user);
             setIsAuth(true);
             navigate("/");
+            fetchPins();
         } catch (error) {
             toast.error(error.response?.data?.message || "Registration failed");
         } finally {
@@ -29,7 +32,7 @@ export const UserProvider = ({ children }) => {
         }
     }
 
-    async function loginUser(email, password, navigate) {
+    async function loginUser(email, password, navigate, fetchPins) {
         setBtnLoading(true);
         try {
             const { data } = await axios.post(
@@ -41,6 +44,7 @@ export const UserProvider = ({ children }) => {
             setUser(data.user);
             setIsAuth(true);
             navigate("/");
+            fetchPins();
         } catch (error) {
             toast.error(error.response?.data?.message || "Login failed");
         } finally {
@@ -75,7 +79,7 @@ export const UserProvider = ({ children }) => {
     }, []);
 
     return (
-        <UserContext.Provider value={{ loginUser, btnLoading, isAuth, user, loading, registerUser }}>
+        <UserContext.Provider value={{ loginUser, btnLoading, isAuth, user, loading, registerUser, setIsAuth, setUser }}>
             {children}
             <Toaster />
         </UserContext.Provider>

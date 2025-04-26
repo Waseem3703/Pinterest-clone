@@ -14,10 +14,12 @@ function Register (){
 
   const { registerUser, btnLoading } = UserData();
   const navigate = useNavigate();
+  const {fetchPins} = PinData();
+  
 
   const submitHandler = (e) => {
     e.preventDefault();
-    registerUser(name, email, password, navigate);
+    registerUser(name, email, password, navigate, fetchPins);
   };
 
     return (

@@ -109,7 +109,8 @@ export const PinProvider = ({ children }) => {
             addComment,
             deleteComment,
             deletePin,
-            addPin
+            addPin,
+            fetchPins
                  }}>
             {children}
         </PinContext.Provider>

@@ -3,6 +3,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { UserData } from "../context/UserContext";
+import { PinData } from "../context/PinContext";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -12,9 +13,11 @@ function Login() {
   const { loginUser, btnLoading } = UserData();
   const navigate = useNavigate();
 
+  const {fetchPins} = PinData();
+
   const submitHandler = (e) => {
     e.preventDefault();
-    loginUser(email, password, navigate);
+    loginUser(email, password, navigate, fetchPins);
   };
 
   return (
