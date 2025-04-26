@@ -32,7 +32,8 @@ const Account = ({ user }) => {
           {/* Avatar */}
           <div className="absolute left-1/2 transform -translate-x-1/2 top-32">
             <div className="w-32 h-32 rounded-full bg-white p-2 shadow-lg">
-              <div className="w-full h-full rounded-full bg-gray-200 flex items-center justify-center text-5xl font-bold text-gray-700">
+              <div className="w-full h-full rounded-full bg-gray-200 flex items-center 
+              justify-center text-5xl font-bold text-gray-700">
                 {user.name.slice(0, 1)}
               </div>
             </div>
@@ -54,12 +55,16 @@ const Account = ({ user }) => {
 
         {/* Pins Section */}
         <div className="mt-10 p-6">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">My Pins</h2>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">
+            My Pins
+          </h2>
           <div className="flex flex-wrap justify-center gap-6">
             {userPins && userPins.length > 0 ? (
               userPins.map((pin) => <PinCard key={pin._id} pin={pin} />)
             ) : (
-              <p className="text-gray-400 text-lg">You have not uploaded any pins yet!</p>
+              <p className="text-gray-400 text-lg">
+                You have not uploaded any pins yet!
+              </p>
             )}
           </div>
         </div>
