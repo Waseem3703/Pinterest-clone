@@ -74,12 +74,50 @@ export const UserProvider = ({ children }) => {
         }
     }
 
+    async function followUser(id) {
+        try {
+            const { data } = await axios.post("/api/user/follow/" + id);
+            toast.success(data.message);
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Follow failed");
+        }
+    }
+
+    const [users, setUsers] = useState([]);
+
+
+    const updateUserInContext = (newUser) => {
+        setUsers((prevUsers) => {
+          const userExists = prevUsers.find((u) => u._id === newUser._id);
+          if (userExists) {
+            // User already exists → Update it
+            return prevUsers.map((u) => (u._id === newUser._id ? newUser : u));
+          } else {
+            // New user → Add to the array
+            return [...prevUsers, newUser];
+          }
+        });
+      };
+      
+
     useEffect(() => {
         FetchUser();
     }, []);
 
     return (
-        <UserContext.Provider value={{ loginUser, btnLoading, isAuth, user, loading, registerUser, setIsAuth, setUser }}>
+        <UserContext.Provider value={{ 
+            loginUser, 
+            btnLoading, 
+            isAuth, 
+            user, 
+            loading, 
+            registerUser, 
+            setIsAuth, 
+            setUser,
+            followUser,
+            updateUserInContext,
+            users,
+            }}>
             {children}
             <Toaster />
         </UserContext.Provider>

@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/Waseem3703/Pinterest-clone/issues"
   },
-  "homepage": "https://github.com/Waseem3703/Pinterest-clone#readme"
+  "homepage": "https://github.com/Waseem3703/Pinterest-clone#readme",
+  "dependencies": {
+    "react-helmet": "^6.1.0",
+    "react-helmet-async": "^2.0.5"
+  }
 }
