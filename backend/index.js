@@ -6,14 +6,12 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cloudinary from "cloudinary";
 import cors from "cors";
+import path from "path"
 
-// ✅ Load environment variables first
 dotenv.config();
 
-// ✅ Initialize express app before using it
 const app = express();
 
-// ✅ CORS middleware
 app.use(
   cors({
     origin: "http://localhost:5173",
@@ -21,22 +19,27 @@ app.use(
   })
 );
 
-// ✅ Other middleware
 app.use(express.json());
 app.use(cookieParser());
 
-// ✅ Cloudinary config
 cloudinary.v2.config({
   cloud_name: process.env.Cloudinary_NAME,
   api_key: process.env.Cloudinary_API,
   api_secret: process.env.Cloudinary_SECRET,
 });
 
-// ✅ Use routes
 app.use("/api/user", UserRoutes);
 app.use("/api/pin", PinRoutes);
 
-// ✅ Start server
+const __dirname = path.resolve();
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+app.get("*", (req, res) =>{
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html" ))
+
+})
+
 const port = 5000;
 app.listen(port, () => {
   console.log(`The app is working on port ${port}`);
