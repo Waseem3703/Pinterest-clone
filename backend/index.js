@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 import cloudinary from "cloudinary";
 import cors from "cors";
 import path from "path"
-
+import AdminRoutes from "./routes/AdminRoutes.js"
 dotenv.config();
 
 const app = express();
@@ -30,6 +30,7 @@ cloudinary.v2.config({
 
 app.use("/api/user", UserRoutes);
 app.use("/api/pin", PinRoutes);
+app.use("/api", AdminRoutes);
 
 const __dirname = path.resolve();
 
