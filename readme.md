@@ -1,15 +1,15 @@
 ```markdown
 # 📌 Pinterest Clone
 
-A **fully responsive**, full-stack Pinterest-style web application where users can upload, view, and save pins, manage their profiles, and explore creative content.
+A fully responsive, full-stack Pinterest-style web application where users can upload, view, and save pins, manage their profiles, and explore creative content.
 
-Built using **React + Vite + Tailwind CSS** on the frontend, and **Node.js + Express + MongoDB** on the backend.
+Built using React + Vite + Tailwind CSS on the frontend, and Node.js + Express + MongoDB on the backend.
 
 ---
 
 ## 🌐 Live Demo
 
-🔗 **[View Live Project](https://pinterest-c.netlify.app/)**
+🔗 [View Live Project](https://pinterest-c.netlify.app/)
 
 ---
 
@@ -127,14 +127,14 @@ Deployed using [Railway](https://railway.app/) or [Render](https://render.com)
 
 ## 🙋‍♂️ Author
 
-**Waseem**
+Waseem
 🔗 [GitHub Profile](https://github.com/Waseem3703)
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License**.
+This project is licensed under the MIT License.
 
 ---
 
