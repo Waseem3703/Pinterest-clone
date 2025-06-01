@@ -1,11 +1,3 @@
-Thanks! Here's your **final polished `README.md`** with:
-
-* ✅ Clean and **working folder structure**
-* ✅ **All screenshots** shown individually (no summary table)
-* ✅ ✅ Removed the broken "Summary Screenshots" section
-
----
-
 ```markdown
 # 📌 Pinterest Clone
 
@@ -75,37 +67,6 @@ Built using **React + Vite + Tailwind CSS** on the frontend, and **Node.js + Exp
 
 
 > All screenshots should be placed inside the `/screenshots` folder in the root directory.
-
----
-
-## 📁 Project Structure
-
-```
-
-pinterest-clone/
-├── backend/              # Node/Express Backend
-│   ├── api/
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   └── routes/
-│   ├── .env              # Environment variables
-│   ├── index.js          # Entry point
-│   └── package.json
-│
-├── frontend/             # React + Vite Frontend
-│   ├── public/
-│   ├── src/
-│   │   ├── assets/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   └── App.jsx
-│   ├── tailwind.config.js
-│   └── package.json
-│
-├── screenshots/          # Project UI images
-└── README.md
-
-````
 
 ---
 
@@ -180,6 +141,3 @@ This project is licensed under the **MIT License**.
 ## ⭐ Support
 
 If you find this project helpful, consider giving it a ⭐ and sharing it with others!
-
-```
-
