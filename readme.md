@@ -154,7 +154,6 @@ Deployed on [Railway](https://railway.app/) or [Render](https://render.com)
 
 M Waseem
 🔗 [GitHub Profile](https://github.com/Waseem3703)
----
 M Waseem
 🔗 [Linkedin Profile](https://www.linkedin.com/in/mwaseem3703/)
 
