@@ -70,15 +70,8 @@ Built using React + Vite + Tailwind CSS on the frontend, and Node.js + Express +
 
 ---
 
-
-## 🧪 Getting Started Locally
-
-### 🔧 1. Clone the Repository
-
-
----
-
 ```bash
+### 🔧 1. Clone the Repository
 git clone https://github.com/your-username/pinterest-clone.git
 cd pinterest-clone
 ````
