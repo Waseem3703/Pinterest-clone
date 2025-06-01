@@ -154,13 +154,14 @@ Deployed on [Railway](https://railway.app/) or [Render](https://render.com)
 
 Waseem
 🔗 [GitHub Profile](https://github.com/Waseem3703)
+🔗 [Linkedin Profile](https://www.linkedin.com/in/mwaseem3703/)
+
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License.
-
+Free Available for everyone
 ---
 
 ## ⭐ Support
