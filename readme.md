@@ -47,7 +47,7 @@ Built using React + Vite + Tailwind CSS on the frontend, and Node.js + Express +
 ## 🖼 UI Screenshots
 
 ### 🏠 Homepage  
-![Homepage](./screenshots/homepage.png)
+![Homepage](./screenshots/Homepage.png)
 
 ### 🔐 Login Page  
 ![Login Page](./screenshots/Login.png)
