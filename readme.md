@@ -1,4 +1,3 @@
-```markdown
 # 📌 Pinterest Clone
 
 A fully responsive, full-stack Pinterest-style web application where users can upload, view, and save pins, manage their profiles, and explore creative content.
@@ -47,31 +46,60 @@ Built using React + Vite + Tailwind CSS on the frontend, and Node.js + Express +
 
 ## 🖼 UI Screenshots
 
-### 🏠 Homepage
+### 🏠 Homepage  
 ![Homepage](./screenshots/homepage.png)
 
-### 🔐 Login Page
+### 🔐 Login Page  
 ![Login Page](./screenshots/Login.png)
 
-### 📝 Signup Page
+### 📝 Signup Page  
 ![Signup Page](./screenshots/Signup.png)
 
-### 👤 User Profile Page
+### 👤 User Profile Page  
 ![User Page](./screenshots/UserPage.png)
 
-### 📤 Pin Upload Page
+### 📤 Pin Upload Page  
 ![Upload Page](./screenshots/Pinupload.png)
 
-### 📌 Pin Details Page
+### 📌 Pin Details Page  
 ![Pin Page](./screenshots/PinPage.png)
 
-
-> All screenshots should be placed inside the `/screenshots` folder in the root directory.
+> 📁 Place all screenshots inside the `/screenshots` directory in the root folder.
 
 ---
 
-```bash
+
+```
+
+pinterest-clone/
+├── frontend/          # React Frontend
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── assets/
+│   │   └── App.jsx
+│   ├── tailwind.config.js
+│   └── package.json
+│
+├── backend/           # Node/Express Backend
+│   ├── api/
+│   │   ├── routes/
+│   │   ├── controllers/
+│   │   └── models/
+│   ├── .env
+│   ├── index.js
+│   └── package.json
+
+````
+
+---
+
+## 🧪 Running Locally
+
 ### 🔧 1. Clone the Repository
+
+```bash
 git clone https://github.com/your-username/pinterest-clone.git
 cd pinterest-clone
 ````
@@ -82,7 +110,7 @@ cd pinterest-clone
 cd backend
 npm install
 touch .env
-# Add your environment variables below
+# Add your environment variables in the .env file
 npm start
 ```
 
@@ -94,7 +122,7 @@ npm install
 npm run dev
 ```
 
-Now visit `http://localhost:5173` in your browser.
+Now visit 👉 `http://localhost:5173` in your browser.
 
 ---
 
@@ -102,7 +130,7 @@ Now visit `http://localhost:5173` in your browser.
 
 Create a `.env` file in `/backend` directory with the following content:
 
-```
+```env
 PORT=5000
 MONGO_URI=your_mongo_connection_string
 JWT_SECRET=your_jwt_secret
@@ -118,7 +146,7 @@ Deployed on [Vercel](https://vercel.com/)
 
 ### ⚙ Backend
 
-Deployed using [Railway](https://railway.app/) or [Render](https://render.com)
+Deployed on [Railway](https://railway.app/) or [Render](https://render.com)
 
 ---
 
@@ -137,4 +165,4 @@ This project is licensed under the MIT License.
 
 ## ⭐ Support
 
-If you find this project helpful, consider giving it a ⭐ and sharing it with others!
+If you found this project helpful, please consider giving it a ⭐ on GitHub and sharing it with your peers!
