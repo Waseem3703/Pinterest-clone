@@ -3,6 +3,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserData } from "../context/UserContext";
 import { FaGoogle, FaFacebook } from "react-icons/fa";
+import { PinData } from "../context/PinContext";
 
 
 function Register (){
