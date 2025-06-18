@@ -1,5 +1,5 @@
 import { User } from "../models/UserModel.js";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import TryCatch from "../utils/TryCatch.js";
 import GenerateToken from "../utils/GenerateToken.js";
 
