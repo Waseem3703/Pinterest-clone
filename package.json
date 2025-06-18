@@ -1,28 +1,16 @@
 {
-  "name": "pintrest-project",
+  "name": "pinterest-clone",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "frontend": "cd frontend && npm run dev",
-    "backend": "cd backend && npm start",
-    "dev": "concurrently \"npm run frontend\" \"npm run backend\""
+    "backend": "cd backend && node index.js",
+    "dev": "concurrently \"npm run frontend\" \"npm run backend\"",
+    "build": "cd frontend && npm install && npm run build",
+    "start": "cd backend && npm install && node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Waseem3703/Pinterest-clone.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/Waseem3703/Pinterest-clone/issues"
-  },
-  "homepage": "https://github.com/Waseem3703/Pinterest-clone#readme",
   "dependencies": {
-    "react-helmet": "^6.1.0",
-    "react-helmet-async": "^2.0.5"
-  }
+    "concurrently": "^9.1.2"
+  },
+  "type": "module"
 }
